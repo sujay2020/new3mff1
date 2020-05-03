@@ -1,0 +1,50 @@
+<p style="text-align: center;font-size: xx-large;">Query Testing</p>
+<div class="row m-0">
+  <div class="col-sm-4 pb-3">
+    <label>Type of Database <font color="red">*</font></label>
+    <select class="form-control" name="type_of_database" ngModel required #type_of_database="ngModel">
+      <option disabled selected [ngValue]="undefined" class="max-width">Select Database type</option>
+  
+      <option class="max-width" value="mysql">MySql </option>
+      <option class="max-width" value="postgre">Postgre </option>
+      <option class="max-width" value="oracle">Oracle </option>
+    </select>
+   
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>JDBC URL<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="JDBCUrl" maxlength="70">
+</div>
+  <div class="col-sm-4 pb-3">
+    <label>UserName<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="userName" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>Password<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="password" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>SqlQuery<font color="red">*</font></label>
+    <textarea class="form-control" [(ngModel)]="sqlQuery"></textarea>
+  </div>
+  <div class="col-sm-4 pb-3"></div>
+  <div class="col-sm-12 pt-3 pb-3" style="text-align:center;">
+    <button class="btn btn-success addbtnspace" (click)="addSenarioDetails()">RUN</button>
+  </div>
+
+
+</div>
+
+
+<div *ngIf="responseDataToDisplay">
+<div *ngFor="let map of mapArray">
+	<mat-table class="mat-elevation-z8" [dataSource]="[map]">
+		<ng-container [matColumnDef]="column.key" *ngFor="let column of map | keyvalue">
+			<mat-header-cell *matHeaderCellDef>{{ column.key }}</mat-header-cell>
+			<mat-cell *matCellDef="let element">{{ column.value }}</mat-cell>
+		</ng-container>
+		<mat-header-row *matHeaderRowDef="({}).constructor.keys(map)"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: ({}).constructor.keys(map)"></mat-row>
+	</mat-table>
+</div>
+</div>

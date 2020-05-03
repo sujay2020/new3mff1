@@ -1,0 +1,83 @@
+<!-- <p style="text-align: center;font-size: xx-large;">API TO FILE SYSTEM</p> -->
+<form #addTemplate1="ngForm">
+<div class="row m-0">
+  <div class="col-sm-4 pb-3">
+    <label>Test Case No.<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="template1.testcaseNum" name="testcaseNum" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>Input<font color="red">*</font></label>
+    <textarea class="form-control" [(ngModel)]="input" name="input">{{input | json}}</textarea>
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>Output<font color="red">*</font></label>
+    <textarea class="form-control" [(ngModel)]="output" name="output">{{output | json}}</textarea>
+  </div>
+
+  <div class="col-sm-4 pb-3">
+    <label>JMS<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="template1.jms" name="jms" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>File System<font color="red">*</font></label>
+    <input class="form-control" [(ngModel)]="template1.fileSystem" name="fileSystem" maxlength="70">
+  </div>
+  <div hidden>
+      <input type="text" [(ngModel)]="server" name="serverIp">
+      <input type="text" [(ngModel)]="packageDetails" name="packageDetails">
+      <input type="text" [(ngModel)]="services" name="services">
+    </div>
+  <div class="col-sm-4 pb-3"></div>
+  <div class="col-sm-12 pt-3 pb-3" style="text-align:center;">
+    <button class="btn btn-success addbtnspace" (click)="addSenarioDetails(addTemplate1.value)">RUN</button>
+  </div>
+
+
+
+</div>
+</form>
+<div class="row m-0 pt-3 " style="padding-left: 378px;" *ngIf="responseDataToDisplay">
+
+  <!-- <div class="col-2 offset-3 pb-3">
+    <span class="alert alert-warning">FileComparisonStatus</span>
+  </div>
+  <div class="col-7 pb-3">
+    <span class="alert alert-warning">{{responseDataToDispaly.fileComparisonStatus}}</span>
+  </div>
+
+  <div class="col-2 offset-3 pt-3 pb-3">
+    <span class="alert alert-warning">ActualDataInTheFile</span>
+  </div>
+  <div class="col-7 pt-3 pb-3">
+    <span class="alert alert-warning">{{responseDataToDispaly.actualDataInTheFile}}</span>
+  </div>
+
+  <div class="col-2 offset-3 pt-3 pb-3">
+    <span class="alert alert-warning">DataSentForCompare</span>
+  </div>
+  <div class="col-7 pt-3 pb-3">
+    <span class="alert alert-warning">{{responseDataToDispaly.dataSentForCompare}}</span>
+  </div>
+  <div class="col-2 offset-3 pt-3 pb-3">
+    <span class="alert alert-warning">FileName</span>
+  </div>
+  <div class="col-7 pt-3 pb-3">
+    <span class="alert alert-warning">{{responseDataToDispaly.fileName}}</span>
+  </div> -->
+  <table mat-table [dataSource]="this.responseDataToDisplay | keyvalue" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="key">
+      <th mat-header-cell *matHeaderCellDef> Alert </th>
+      <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+  </table>
+
+</div>

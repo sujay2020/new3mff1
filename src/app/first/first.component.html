@@ -1,0 +1,192 @@
+<!-- <p style="text-align: center;font-size: xx-large;">API TO FILE SYSTEM</p> -->
+  <div class="col-md-12 p-3 apiConfig">
+
+
+        <!-- <h3 class="first pt-3">Enter the Server Details</h3> -->
+    <!-- <h2>Add DB Details</h2> -->
+    <!-- <button class="btn btn-info add" routerLink="/Dashboard/db-list">Back</button> -->
+
+    <form #form="ngForm">
+      <div class="form-group">
+        <!-- <p-accordion>
+          <p-accordionTab header="Add DB" selected=true> -->
+            <div class="row">
+
+              <!-- Type of Databse -->
+              <div class="col-sm-4 pb-3">
+                <label>Type of Database <font color="red">*</font></label>
+                <select class="form-control" name="type_of_database" [(ngModel)]="template2.droupDownSelectValue" required #type_of_database="ngModel">
+                  <option disabled selected [ngValue]="undefined" class="max-width">Select Database type</option>
+                  <!-- <option selected >type_of_database</option> -->
+                  <option class="max-width" value="mysql">MySql </option>
+                  <option class="max-width" value="postgre">Postgre </option>
+                  <option class="max-width" value="oracle">Oracle </option>
+                </select>
+                <div class="form-control-feedback" *ngIf="type_of_database.errors && (type_of_database.dirty || type_of_database.touched)">
+                  <font color="red">
+                    <p *ngIf="type_of_database.errors.required">Database Type is required</p>
+                  </font>
+                </div>
+              </div>
+
+              <!-- Schema Name -->
+              <div class="col-sm-4 pb-3">
+                <label>Schema Name<font color="red">*</font></label>
+                <input type="text" placeholder="Schema Name" class="form-control" name="database_name" ngModel
+                  #database_name="ngModel" [(ngModel)]= "template2.db_name" ngValue="db">
+                <font color="red">
+                  <div *ngFor="let db of dbdetails">
+                    <p *ngIf="db.database_name==database_name.value">db name is already exist</p>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="database_name.errors && (database_name.dirty || database_name.touched)">
+                    <p *ngIf="database_name.errors.required">Db name is required</p>
+                  </div>
+                </font>
+              </div>
+
+
+
+              <!-- Host Name -->
+              <div class="col-sm-4 pb-3">
+                <label>Host Name</label>
+                <font color="red">*</font>
+                <input ngModel placeholder="Host Name" name="host_name" class="form-control" #hostName="ngModel" 
+                [(ngModel)]="template2.host_name">
+                <div class="form-control-feedback" *ngIf="hostName.errors && (hostName.dirty || hostName.touched)">
+                  <font color="red">
+                    <p *ngIf="hostName.errors.required">Host Name is required</p>
+                  </font>
+                </div>
+              </div>
+
+              <!-- Port Number -->
+              <div class="col-sm-4 pb-3">
+                <label>Port Number</label>
+                <font color="red">*</font>
+                <input ngModel pattern="[0-9]+" placeholder="Port Number" name="port_no" class="form-control"
+                 #portNo="ngModel"  [(ngModel)]="template2.port_number" value="1521">
+                <div class="form-control-feedback" *ngIf="portNo.errors && (portNo.dirty || portNo.touched)">
+                  <font color="red">
+                    <p *ngIf="portNo.errors.required">Port Number is required</p>
+                    <p *ngIf="portNo.errors.pattern">Port Number must contain only numbers</p>
+                  </font>
+                </div>
+              </div>
+
+              <!-- Username -->
+              <div class="col-sm-4 pb-3">
+                <label>User Name<font color="red">*</font></label>
+                <input ngModel placeholder="UserName" name="user_name" class="form-control" #UserName="ngModel" 
+                [(ngModel)]="template2.user_name" [value]="wmuser">
+                <div class="form-control-feedback" *ngIf="UserName.errors && (UserName.dirty || UserName.touched)">
+                  <font color="red">
+                    <p *ngIf="UserName.errors.required">UserName is required</p>
+                    <!-- <div *ngIf="UserName.errors.minlength">username must be at least 4 characters long.</div> -->
+                  </font>
+                </div>
+              </div>
+              <!-- Password -->
+              <div class="col-sm-4 pb-3">
+                <label>Password<font color="red">*</font></label>
+                <input ngModel type="password" placeholder="Password" name="password" class="form-control"
+                  #Password="ngModel" maxlength="50"  [(ngModel)]="template2.password">
+                <div class="form-control-feedback" *ngIf="Password.errors && (Password.dirty || Password.touched)">
+                  <font color="red">
+                    <p *ngIf="Password.errors.required">Password is required</p>
+                  </font>
+                </div>
+              </div>
+
+              <div class="col-sm-4 pb-3">
+                <label>Input <font color="red">*</font></label>
+                <textarea ngModel placeholder="Input Data" name="inputValue" class="form-control"
+                  #Input="ngModel" [(ngModel)]="template2.input">{{template2.input | json}}</textarea>
+                
+              </div>
+              
+              <div hidden>
+                <input type="text" name="queries" [(ngModel)]="this.AuthTypeSourceForm.value.addSourceSecurities">
+              </div>
+            <form class="mt-4" [formGroup]="AuthTypeSourceForm">
+              <div class="col-sm-12 pb-3" style="text-align:center;">
+                <button class="btn btn-success addbtnspace" (click)="addSourceAuthType()">Add a Query</button>
+              </div>
+              <div  formArrayName="addSourceSecurities" *ngFor="let addSourceSecurity of AuthTypeSourceForm.get('addSourceSecurities').controls;let i=index">
+                <div [formGroupName]="i">
+                  <div class="row">
+                <div class="col-sm-4">
+                  <label>TableName<font color="red">*</font></label>
+                  <input type="text" placeholder="TableName" formControlName="TableName" name="TableName" 
+                  class="form-control" maxlength="70" [(ngModel)]="template2.table_name">
+                </div>
+                <div class="col-sm-4">
+                  <label>Condition<font color="red">*</font></label>
+                  <input type="text" placeholder="Ex:id=1 and name='abc'" formControlName="ColoumName" name="ColoumName" class="form-control"
+                    maxlength="70" [(ngModel)]="template2.condition">
+                </div>
+                
+                <div class="col-sm-4" style="text-align:center;">
+                  <button class="btn btn-success addbtnspace" (click)="deleteSourceAuthType()">Delete</button>
+                </div>
+              </div>
+              </div>
+              </div>
+              <div hidden>
+                <input type="text" [(ngModel)]="server" name="serverIp">
+                <input type="text" [(ngModel)]="packageDetails" name="packageDetails">
+                <input type="text" [(ngModel)]="services" name="services">
+              </div>
+              <div class="col-sm-12 pt-6" style="text-align:center;">
+                <button class="btn btn-success addbtnspace" [disabled]="!form.valid" (click)="addDbDetails(form.value)">RUN</button>
+              </div>
+              <!-- <div class="row mt-4" *ngIf="responseDataToDisplayFlagTrue">
+                <div class="col-2">
+                  <span class="alert alert-success">{{responseDataToDisplay.status}}</span>
+                </div>
+                <div class="col-10">
+                  <span class="alert alert-warning">{{responseDataToDisplay.message}}</span>
+                </div>
+              </div> -->
+              <!-- <div class="row mt-4" *ngIf="responseDataToDisplayFlagFalse">
+                <div class="col-2">
+                  <span class="alert alert-danger">{{responseDataToDisplay.status}}</span>
+                </div>
+                <div class="col-10">
+                  <span class="alert alert-warning">{{responseDataToDisplay.message}}</span>
+                </div>
+              </div> -->
+              <div class="row mt-4" *ngIf="responseDataToDisplay">
+                <table mat-table [dataSource]="this.responseDataToDisplay | keyvalue" class="mat-elevation-z8">
+    
+                  <ng-container matColumnDef="key">
+                    <th mat-header-cell *matHeaderCellDef> Alert </th>
+                    <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                </table>
+              </div>
+            </form>
+            
+              <!-- <span class="">{{responseDataToDisplay.status}}</span> -->
+           
+            <!-- </div>
+            <div> -->
+              <!-- <span class="">{{responseDataToDisplay.message}}</span> -->
+            
+
+          <!-- </p-accordionTab>
+        </p-accordion> -->
+      </div>
+      </div>
+    </form>
+
+
+  </div>
+ 

@@ -1,0 +1,30 @@
+.example-container {
+  height: calc(100% - 64px);
+  margin: 10px;
+  /* display: flex; */
+ 
+}
+.mat-toolbar.mat-warn {
+  background: #ffffff;
+  color: #000000;
+}
+.side-menu-coustom:focus,.side-menu-coustom:active{
+  outline: none !important;
+}
+
+.side-nav-container {
+  background-color: #0072C6;
+}
+
+.mat-nav-list{
+  width: 150px;
+}
+.mat-nav-list a{
+  color:#ffffff;
+}
+.mat-nav-list a:hover{
+  background-color: #7fcbc9;
+}
+.side-nav-container .active{
+  background-color: #7fcbc9;
+}

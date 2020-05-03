@@ -1,0 +1,109 @@
+<p style="text-align: center;font-size: xx-large;">Server Details</p>
+<div class="col-md-12 p-4 apiConfig">
+<mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        List Of Servers
+      </ng-template>
+      <!-- <h1>Best pasta restaurants</h1>
+      <p>...</p> -->
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+      </mat-form-field>
+      
+      <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8 table-hover table-striped mat-table-custom text-center">
+      
+        <!-- Server Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Server Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.serverName}} </td>
+        </ng-container>
+      
+        <!-- Desc Column -->
+        <ng-container matColumnDef="symbol">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Desc of Server </th>
+            <td mat-cell *matCellDef="let element" > {{element.desc}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Host IP </th>
+          <td (click)="getRecord(element)" mat-cell *matCellDef="let element"> {{element.ip}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Port </th>
+          <td mat-cell *matCellDef="let element"> {{element.port}} </td>
+        </ng-container>
+      
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+    </mat-tab>
+    <mat-tab >
+      <ng-template mat-tab-label>
+        Add the Server Details
+      </ng-template>
+      <h3 class="first pt-3">Enter the Server Details</h3>
+      
+    <div class="row m-0"> 
+      <div class="col-md-6 pb-4">
+        <div style="margin-left:180px ;">
+        <label>Display Name<font color="red">*</font></label>
+        <input class="form-control" [(ngModel)]="hostname"
+          maxlength="70" >
+      </div></div>
+      <div class="col-sm-4 pb-4">
+        <div style="margin-left:3px ;">
+        <label>Description<font color="red">*</font></label>
+        <input class="form-control" [(ngModel)]="desc"
+          maxlength="70" >
+      </div></div>
+       <div class="col-md-6">
+        <div style="margin-left:260px ;">
+        <label>IP<font color="red">*</font></label>
+        <input class="form-control" [(ngModel)]="ip"
+          maxlength="70" >
+      </div></div>
+      <div class="col-md-3 pb-3">
+        <label>Port Number<font color="red">*</font></label>
+        <input class="form-control" [(ngModel)]="port"
+          maxlength="70" >
+      </div>
+        <div class="col-md-6 pb-3">
+          <div style="margin-left:260px;">
+        <label>Username<font color="red">*</font></label>
+        <input class="form-control" [(ngModel)]="username"
+          maxlength="70" >
+      </div></div>
+      
+      <div class="col-md-3 pb-3">
+        <label>Password<font color="red">*</font></label>
+        <input type="password" class="form-control" [(ngModel)]="pwd"
+          maxlength="70" >
+      </div>
+      <!-- <div class="col sm-2" style="text-align:center;" >
+        <button class="btn btn-success addbtnspace"(click)="addDetailsToServer()">TEST</button>
+      </div> -->
+     
+    
+    
+    
+      <div class="pt-6" style="margin-left: 540px;" >
+        <button class="btn btn-success addbtnspace"(click)="addDetailsToServer()">ADD</button><br><br>
+        <button class="btn btn-success"  (click)="getquin()">TEST</button>
+        
+                     
+      </div>
+     </div> 
+    </mat-tab>
+  </mat-tab-group>
+
+
+
+  

@@ -1,0 +1,238 @@
+.save{
+    margin-left: 430px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px !important;
+    width:90px;
+  }
+  .add{
+    width: 100px;
+      padding-bottom: 31px;
+      padding-left: 18px;
+      padding-right: 15px;
+      padding-top: 6px;
+      height: 34px;
+      position: absolute;
+      right: -359px !important;
+      background-color: #00a0d0;
+      border-radius: 26px !important;
+      transition: width 0.4s ease-in-out;
+      top: 0px;
+  
+  }
+  :host ::ng-deep button {
+    margin-right: .25em;
+  }
+  
+  :host ::ng-deep .custom-toast .ui-toast-message {
+    color: #ffffff;
+    background: #FC466B;
+    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+    background: linear-gradient(to right, #3F5EFB, #FC466B);
+  }
+  
+  :host ::ng-deep .custom-toast .ui-toast-close-icon {
+    color: #ffffff;
+  }
+  
+  
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/primeng/resources/primeng.min.css';
+
+
+/* .apiConfig{
+    left: 265px;
+    top: 75px;
+   
+} */
+
+.body{
+    font-family: 'Raleway', sans-serif !important;
+}
+.black-overlay[_ngcontent-c10] {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999!important;
+}
+.config{
+       height:100%;
+       position: absolute;
+       width:100%;
+       }
+.h2, h2{
+       font-size: 30px;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+       font-weight: 400;
+       line-height: 1.1;
+       display: block;
+       color: #565c61;
+       }
+.input{
+       margin-top: 0px !important;
+       margin-bottom: 0px !important;
+       height: 38px !important;
+       }
+.main{
+       background-color: #ffffff !important;
+       width: 1017px !important;
+       margin-top: 30px !important;
+       border: 1px solid #ced4da;
+       overflow-y: scroll; height:400px;
+    }
+.pi-plus:before{
+    color:#00a0d0 !important;
+}
+
+.pi-minus:before{
+    color:#00a0d0 !important;
+}
+
+.pi-caret-right:before{
+    color:#00a0d0 !important;
+}
+
+.pi-caret-down:before{
+    color:#00a0d0 !important;
+}
+
+.pi-times:before{
+    color:#ffffff !important
+}
+
+.ui-accordion .ui-accordion-header a{
+    background: #ffffff !important;
+    color:#00a0d0 !important;
+    font-weight:600 !important;
+    width: 1000px !important;
+}
+.ui-accordion .ui-accordion-content{
+    width: 1000px !important;
+}
+
+.ui-tabview .ui-tabview-panels{
+    /* width: 169%; */
+    margin-top: 10px;
+    overflow-y: scroll; 
+    height: 646px;
+    width: 1050px;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-tabview-selected a{
+    background-color:#ffffff !important;
+    color: #0839a7 !important;
+    font-size: 16px !important; 
+}
+
+.ui-dialog .ui-dialog-titlebar{
+    background-color: #00a0d0 !important;
+    color:#ffffff !important;
+}
+:host ::ng-deep button {
+    margin-right: .25em;
+  }
+  
+  :host ::ng-deep .custom-toast .ui-toast-message {
+    color: #ffffff;
+    background:lightskyblue;
+    background: -webkit-linear-gradient(to right, lightskyblue, lightskyblue);
+    background: linear-gradient(to right, lightskyblue, lightskyblue);
+  }
+  
+  :host ::ng-deep .custom-toast .ui-toast-close-icon {
+    color: #ffffff;
+  }
+  .ui-tabview .ui-tabview-nav li a {
+    font-size: 16px!important;
+}
+.report_table_cont{
+    width: 636px;
+    height: 251px;
+    margin-top: 18px;
+    float:left;
+}
+body .ui-card {
+    overflow: hidden;
+    height: 200px;
+}   
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.ui-tab-view .ui-tabview-panels{
+    border: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+    
+}
+.ui-panel-titlebar{
+    border: none;
+    width: 100% !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+.ui-panel .ui-panel-content .ui-widget-content{
+    border: none;
+    width: 100% !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+    border: 1px solid #ffffff !important;
+}
+.mat-drawer-container .ui-panel .ui-panel-content {
+    
+    border: 1px solid #ffffff !important;
+}
+.mat-drawer-container .ui-panel .ui-panel-titlebar {
+     border: 1px solid #ffffff !important; 
+}
+.mat-drawer-container .ui-tabview.ui-tabview-top .ui-tabview-nav {
+    margin-bottom: -3px !important;
+    margin-left: 19px !important; 
+}
+
+/* body .ui-tabview.ui-tabview-top .ui-tabview-nav li a, 
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li a,
+ body .ui-tabview.ui-tabview-left .ui-tabview-nav li a, 
+ body .ui-tabview.ui-tabview-right .ui-tabview-nav li a {
+    float: none;
+    display: inline-block;
+    color: #333333;
+    padding: 0.575em 1.57em!important;
+    
+    font-weight: 400;
+} */
+
+.mat-drawer-container .ui-tabview.ui-tabview-top .ui-tabview-nav li a, body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li a, body .ui-tabview.ui-tabview-left .ui-tabview-nav li a, body .ui-tabview.ui-tabview-right .ui-tabview-nav li a {
+    float: none; 
+     display: inline-block; 
+    color: #333333; 
+     padding: 0.571em 1.27em !important; 
+     font-weight: 400;
+}  
+.addbtnspace {
+    margin-top: 32px;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table-custom{
+    border: 1px solid #cccccc;
+    
+  }
+

@@ -1,0 +1,257 @@
+<div class="col-md-12 p-5 apiConfig">
+  
+   <!-- <button class="btn btn-info add" routerLink="/Dashboard/db-list">Back</button> -->
+  
+   <!-- <form> -->
+
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          List Of TestCases
+        </ng-template>
+        <!-- <h1>Best pasta restaurants</h1>
+        <p>...</p> -->
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+        </mat-form-field>
+        
+        <table mat-table [dataSource]="dataSource" class="w-100 border mat-elevation-z8 table-hover table-striped mat-table-custom text-center">
+        
+          <!-- Testcase Column -->
+          <ng-container matColumnDef="testcase">
+            <th class="text-center"  mat-header-cell *matHeaderCellDef> Test Case Type</th>
+            <td mat-cell *matCellDef="let element; let i = index;"> {{element.testType}} </td>
+            
+          </ng-container>
+
+          <ng-container matColumnDef="testId">
+            <th class="text-center"  mat-header-cell *matHeaderCellDef> Test Case Id</th>
+            <td mat-cell *matCellDef="let element; let i = index;"> {{element.testId}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="desc">
+            <th class="text-center"  mat-header-cell *matHeaderCellDef> Test Case Desc</th>
+            <td mat-cell *matCellDef="let element; let i = index;">
+            <div class="px-2" *ngIf="(testData && idToEdit==i)">
+              <input class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="descTable" [value]="element.testCase.desc">
+            </div>
+            <div *ngIf="!(testData && idToEdit==i)"> {{element.testCase.desc}} </div>
+            </td>
+          </ng-container>
+
+
+
+           
+
+        
+
+
+
+
+          <ng-container matColumnDef="server">
+            <th class="text-center"  mat-header-cell *matHeaderCellDef> Server</th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+            <div class="px-2" *ngIf="(testData && idToEdit==i)">
+              <input class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="serverTable" [value]="element.testCase.server">
+            </div>
+            <div *ngIf="!(testData && idToEdit==i)">{{element.testCase.server}}</div>
+          </td>
+          </ng-container>
+
+         
+
+  <ng-container matColumnDef="package">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Package </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+              <div class="px-2" *ngIf="(testData && idToEdit==i)">
+                <input class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="package" [value]="element.testCase.package">
+              </div>
+              <div *ngIf="!(testData && idToEdit==i)">{{element.testCase.package}}</div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="services">
+            <th class="text-center"  mat-header-cell *matHeaderCellDef> Services</th>
+            <td mat-cell *matCellDef="let element; let i = index;">
+              <div class="px-2" *ngIf="(testData && idToEdit==i)">
+                <input class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="package" [value]="element.testCase.services">
+              </div>
+              <div *ngIf="!(testData && idToEdit==i)"> {{element.testCase.services}}</div> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="input">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Input </th>
+            <td *matCellDef="let element; let i = index;"> 
+              <div class="p-2" *ngIf="(testData && idToEdit==i)"> 
+                <textarea class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="input" [value]="element.testCase.input | json"></textarea>
+              </div>
+              <div class="p-2" *ngIf="!(testData && idToEdit==i)"> 
+                <textarea class="form-control ">{{element.testCase.input | json}} </textarea>
+              </div>
+            </td>
+          </ng-container> 
+
+
+          <ng-container matColumnDef="output">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Output </th>
+            <td *matCellDef="let element; let i = index;"> 
+              <div class="p-2" *ngIf="(testData && idToEdit==i)"> 
+                <textarea class="form-control " required [disabled]="!(testData && idToEdit==i)" [(ngModel)]="output" [value]="element.testCase.output | json"></textarea>
+              </div>
+              <div class="p-2" *ngIf="!(testData && idToEdit==i)"> 
+                <textarea class="form-control ">{{element.testCase.output | json}} </textarea>
+              </div>
+            </td>
+          </ng-container> 
+
+  
+
+
+
+           <ng-container matColumnDef="action">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+              <div *ngIf="(testData && idToEdit==i)">
+                <i class="fa fa-floppy-o pr-2" id="{{i}}" (click)="saveTheEdited(element)"></i>
+                <i  class="fa fa-times" (click)="cancel()"></i>
+              </div>
+              <div *ngIf="!(testData && idToEdit==i)">
+                <i class="fa fa-pencil pr-2" id="{{i}}" (click)="edited(element,i)"></i>
+                <i  class="fa fa-trash" ></i>
+              </div>
+            </td>
+          </ng-container> 
+
+
+
+        
+  
+          
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+      
+      </mat-tab>
+      <mat-tab >
+        <ng-template mat-tab-label>
+          Add the TestCase Details
+        </ng-template>
+     <div class="form-group">
+        <p-accordion>
+         <p-accordionTab header="" selected=true>
+           <form #addForm="ngForm">
+           <div class="row m-0">
+  
+            <!-- Type of Server -->
+            <div class="col-sm-4 pb-3">
+              <label>Server<font color="red">*</font></label>
+              <select class="form-control" [ngModel]="serverIp" name="serverIp" (change)="serverDetailsChange($event)" >
+              <!-- <select class="form-control" name="serverIp" ngModel #serverIp="ngModel" (change)="serverDetailsChange($event)" [value]="serverIp">   -->
+                <option disabled selected [ngValue]="undefined" class="max-width">Select the Server</option>
+                <option [selected]="serverIp" >{{serverIp}}</option>
+                <option *ngFor="let server of serverdetails;let i=index" [value]="server.ip +','+ server.port +',' +server.userName +','+ server.password +','+ server.desc+','+ server.sid+','+ server.serverName" >{{server.serverName}}</option>
+              </select>
+              
+            </div>
+             <!-- Type of Databse -->
+             <div class="col-sm-4 pb-3">
+               <label>Package Details<font color="red">*</font></label>
+               <select class="form-control" [(ngModel)]="selected" name="packageDetails" (change)="packageDetailsChange($event)" >
+                <option disabled selected [ngValue]="undefined" class="max-width">Select the Package</option>
+                 <option *ngFor="let auth of data1;let i=index" [value]="auth.name">{{auth.name}}</option>
+               </select>
+             </div>
+  
+             <!-- Type of Databse -->
+             <!-- <div class="col-sm-4 pb-3">
+               <label>Services<font color="red">*</font></label>
+               <select class="form-control" [(ngModel)]="selectedServices" name="services" (change)="servicesDetailsChange($event,selected)">
+                 <option disabled selected [ngValue]="undefined" class="max-width">Select the Services</option>
+                 <option *ngFor="let auth of data2;let i=index" [value]="auth">{{auth}}</option>
+               </select>
+             </div> -->
+             <div class="col-sm-4 pb-3">
+                <label>Services<font color="red">*</font></label>
+                <select class="form-control" [(ngModel)]="selectedServices" name="services" (change)="servicesDetailsChange($event,selected)">
+                  <option disabled selected [ngValue]="undefined" class="max-width">Select the Services</option>
+                  <option *ngFor="let auth of data2;let i=index" [value]="auth">{{auth}}</option>
+                  <!-- <option value="data">service</option> -->
+                </select>
+              </div>
+             <div class="col-sm-4 pb-3">
+              <label>Select the Template<font color="red">*</font></label>
+              <select class="form-control" ngModel (change)="templateDetailsChange($event,selected)">
+                <option disabled selected [ngValue]="undefined" class="max-width">Select the Template</option>
+                <option value="template1">Template1</option>
+                <option value="template2">Template2</option>
+              </select>
+            </div>
+            <app-first *ngIf="templateData == 'template2'" [server]="addForm.value.serverIp" [packageDetails]="addForm.value.packageDetails" [services]="addForm.value.services"></app-first>
+            <app-senario-one *ngIf="templateData == 'template1'" [server]="addForm.value.serverIp" [packageDetails]="addForm.value.packageDetails" [services]="addForm.value.services"></app-senario-one>
+          </div>
+          </form>
+         </p-accordionTab>
+       </p-accordion>
+       <!-- <div class="row m-0 text-center"  *ngIf="inputoutput">
+          <div class="col-4 offset-2 pb-2">
+            <h6 class="text-center">Input</h6>
+            <div *ngFor="let x of inputValueToDisplay;let i=index">
+              <div >
+                <label>{{x}}</label> <input class="form-control" type="text" name="{{x}}" id={{i}}>
+              </div>
+             </div>
+          </div>
+          <div class="col-4 pb-2">
+            <h6 class="text-center">Output</h6>
+            <div *ngFor="let y of outValueToDisplay;let j=index">
+              <div >
+                <label>{{y}}</label> <input class="form-control" type="text" name="{{y}}out" id={{j}}>
+              </div>
+             </div>
+          </div>
+       </div> -->
+
+       <!-- <div class="row m-0 text-center"  *ngIf="inputoutput">
+  <div class="row m-0">
+  <div class="col-sm-4 pb-3">
+    <label>Test Case No.</label>
+    <input class="form-control" [(ngModel)]="testcaseNum" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>Input</label>
+    <textarea class="form-control" [(ngModel)]="input">{{input | json}}</textarea>
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>Output</label>
+    <textarea class="form-control" [(ngModel)]="output"></textarea>
+  </div>
+
+  <div class="col-sm-4 pb-3">
+    <label>JMS</label>
+    <input class="form-control" [(ngModel)]="jms" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3">
+    <label>File System</label>
+    <input class="form-control" [(ngModel)]="fileSystem" maxlength="70">
+  </div>
+  <div class="col-sm-4 pb-3" style="text-align:center;"  *ngIf="inputoutput" >
+    <label>Add the Description</label>
+    <input class="form-control" [(ngModel)]="description">
+  </div>
+  </div>
+       </div> -->
+
+
+       
+       <div class="col-sm-12 pt-3" style="text-align:center;"  *ngIf="inputoutput">
+        <button class="btn btn-success addbtnspace" (click)="hitTheServices()" >RUN the TEST</button>
+      </div>
+     </div>
+   <!-- </form> -->
+  </mat-tab>
+</mat-tab-group>
+ </div>

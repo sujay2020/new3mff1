@@ -1,0 +1,122 @@
+<div class="row m-0">
+    <h1 class="text-center w-100">DB to DB</h1>
+    <h3 class="w-100 px-3" >Source DB</h3>
+    <form class="w-100 px-3" #form="ngForm">
+      <div class="form-group">
+            <div class="row">
+
+              <!-- Type of Databse -->
+              <div class="col-sm-4 pb-3">
+                <label>Type of Database <font color="red">*</font></label>
+                <select class="form-control" name="type_of_database" ngModel required #type_of_database="ngModel" [(ngModel)]="TypeDb">
+                  <option disabled selected [ngValue]="undefined" class="max-width">Select Database type</option>
+                  <!-- <option selected >type_of_database</option> -->
+                  <option class="max-width" value="mysql">MySql </option>
+                  <option class="max-width" value="postgre">Postgre </option>
+                  <option class="max-width" value="oracle">Oracle </option>
+                </select>
+              </div>
+
+              <!--JDBC Url -->
+              <div class="col-sm-4 pb-3">
+                <label>JDBC Url<font color="red">*</font></label>
+                <input type="text" placeholder="Jdbc Url" class="form-control" name="url_name"  [(ngModel)]= "UrlName" ngValue="db">
+              </div>
+              <!-- Username -->
+              <div class="col-sm-4 pb-3">
+                <label>User Name<font color="red">*</font></label>
+                <input ngModel placeholder="UserName" name="user_name" class="form-control" [(ngModel)]="userName">
+              </div>
+              <!-- Password -->
+              <div class="col-sm-4 pb-3">
+                <label>Password<font color="red">*</font></label>
+                <input ngModel type="password" placeholder="Password" name="password" class="form-control" [(ngModel)]="password"
+                  #Password="ngModel" maxlength="50">
+              </div>
+
+              <div class="col-sm-4 pb-3">
+                <label>Table Name<font color="red">*</font></label>
+                <input ngModel placeholder="TableName" name="table_name" class="form-control" [(ngModel)]="tableName">
+              </div>
+     
+              <div class="col-sm-4 pb-3">
+                <label>Column Name<font color="red">*</font></label>
+                <input ngModel placeholder="ColoumName" name="column_name" class="form-control" [(ngModel)]="columnName">
+              </div>
+
+              <div class="col-sm-4">
+                <label>Condition<font color="red">*</font></label>
+                <textarea name="condition" [(ngModel)]="condition" class="form-control"></textarea>
+              </div>   
+      </div>
+      
+      </div>
+    </form>
+    <div class=" px-3" >
+    <h3 >Target DB
+    <mat-slide-toggle
+          class="example-margin" [formControl]="autoRenew"  (change)="onChange($event)"
+          >
+        Slide me!! To Copy Source DB Details
+      </mat-slide-toggle>
+    </h3>
+    </div>
+    <form class="w-100 px-3" #form="ngForm">
+      <div class="form-group">
+        <div class="row">
+         <!-- Type of Databse -->
+         <div class="col-sm-4 pb-3">
+          <label>Type of Database <font color="red">*</font></label>
+          <select class="form-control" name="type_of_database" ngModel required #type_of_database="ngModel" [(ngModel)]="tTypeDb">
+            <option disabled selected [ngValue]="undefined" class="max-width">Select Database type</option>
+            <!-- <option selected >type_of_database</option> -->
+            <option class="max-width" value="mysql">MySql </option>
+            <option class="max-width" value="postgre">Postgre </option>
+            <option class="max-width" value="oracle">Oracle </option>
+          </select>
+        </div>
+
+        <!--JDBC Url -->
+        <div class="col-sm-4 pb-3">
+          <label>JDBC Url<font color="red">*</font></label>
+          <input type="text" placeholder="Jdbc Url" class="form-control" name="Url_name"  [(ngModel)]= "tUrlName" >
+        </div>
+
+        <!-- Username -->
+        <div class="col-sm-4 pb-3">
+          <label>User Name<font color="red">*</font></label>
+          <input ngModel placeholder="UserName" name="user_name" class="form-control" [(ngModel)]="tuserName">
+        </div>
+
+         <!-- Password -->
+         <div class="col-sm-4 pb-3">
+          <label>Password<font color="red">*</font></label>
+          <input ngModel type="password" placeholder="Password" name="password" class="form-control" [(ngModel)]="tpassword"
+            #Password="ngModel" maxlength="50">
+        </div>
+
+        <div class="col-sm-4 pb-3">
+          <label>Table Name<font color="red">*</font></label>
+          <input type="text" placeholder="TableName" name="tTableName" class="form-control"  [(ngModel)]="tTableName">
+        </div>
+
+        <div class="col-sm-4 pb-3">
+          <label>Column Name<font color="red">*</font></label>
+          <input type="text"class="form-control" [(ngModel)]="tColumnName" name="tColumnName" placeholder="ColumnNames"  />
+        </div>
+        
+        <div class="col-sm-4">
+          <label>Condition<font color="red">*</font></label>
+          <textarea name="tcondition" [(ngModel)]="tcondition" class="form-control"></textarea>
+        </div>  
+
+
+        </div>
+      </div>
+    </form>
+    <div class="col-sm-12 text-center pb-3">
+      <button class="btn btn-primary addbtnspace" (click)="SaveTest()">save</button>
+      
+      <button class="btn btn-success addbtnspace ml-2" (click)="RunTest()">Run Test</button>
+    </div>
+  </div>

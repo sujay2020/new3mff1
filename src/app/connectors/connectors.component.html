@@ -1,0 +1,68 @@
+<!-- <div class="row m-0 p-3">
+  
+    <div class="col-3 pb-3">
+      <a [routerLink]="['/Dashboard/server']"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;"
+          src="../assets/webmethods.png"> </a>
+    </div>
+    <div class="col-3 pb-3">
+      <a [routerLink]="['/Dashboard/server']"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;" class="2"
+          src="../assets/fusion.png" /></a>
+    </div>
+
+
+ 
+</div> -->
+<div class="row m-0 p-3">  
+  <div class="col-3 pb-3">
+    <a [routerLink]="['/Dashboard/server']"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;"
+        src="../assets/webmethods.png"> </a>
+  </div>
+  <div class="col-3 pb-3">
+    <a (click)="openDialog()" label="Show"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;" class="2"
+        src="../assets/OracleFusion.png" /></a>
+  </div>
+  <div class="col-3 pb-3">
+    <a (click)="openDialog()" label="Show"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;" class="2"
+        src="../assets/WSO2.png" /></a>
+  </div>
+  <div class="col-3 pb-3">
+    <a (click)="openDialog()" label="Show"><img style="border: 2px solid rgb(14, 0, 0);border-radius: 5px;" class="2"
+        src="../assets/mulesoft.jpg" /></a>
+  </div>
+  <!-- <p-dialog header="Title" [(visible)]="display">
+    <p>Not Available in Demo Version</p>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" (click)="display=false" label="close">close</button>
+        </p-footer>
+</p-dialog> -->
+<!-- <button type="button" class="btn btn-primary" (click)="showModal=true" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button>
+<div class="modal" id="myModal" [ngClass]="{'show':showModal}">
+  <div class="modal-dialog">
+    <div class="modal-content"> -->
+
+      <!-- Modal Header -->
+      <!-- <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" (click)="showModal=false" data-dismiss="modal">&times;</button>
+      </div> -->
+
+      <!-- Modal body -->
+      <!-- <div class="modal-body">
+        Not Available in Demo Version
+      </div> -->
+
+      <!-- Modal footer -->
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="showModal=false" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div> -->
+
+<!-- <button mat-raised-button (click)="openDialog()"> OpenModal</button> -->
+<button (click)="open()">Click</button>

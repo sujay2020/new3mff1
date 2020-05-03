@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+        outline: none;
+        }
+        body {
+        background-color: #f9f9f9;
+        background-image: url('../assets/bg.jpg');
+        background-position: top center;
+        background-size: cover;
+        }
+        .form-holder h4 {
+        text-align: center;
+        padding: 20px 15px 5px;
+        margin: 0px;
+        font-weight: 400;
+        font-size: 24px;
+        }
+        .form-holder {
+        transition: 0.5s ease;
+
+        position: absolute;
+        width: 350px;
+        height: 250px;
+
+        left: calc(50% - 175px);
+        bottom: calc(50% - 125px);
+
+        background-color: rgba(255,255,255,.95);
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        border-radius:5px;
+        }
+
+        .form-holder form {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 5px;
+        align-items: center;
+        }
+
+        .form-holder form input {
+        background-color: #fff;
+        border:1px solid #efefef;
+        border-radius: 5px;
+        text-indent: 15px;
+        }
+
+        .form-holder form button {
+        background-color: #269bff;
+        color: #fff;
+        font-size: 15px;
+        border:none;
+        border-radius: 5px
+        }
+
+        .form-holder form a {
+        appearance: none;
+        -webkit-appearance: none;
+        }
+
+        .form-holder form input, 
+        .form-holder form button {
+        height: 40px;
+        width: 80%;
+        margin: 10px 0px 0px;
+        }
+
+        .form-holder form button:hover {
+        cursor: pointer;
+        transition: 0.3s;
+        opacity: 0.8;
+        }
+
+        .form-holder form button:disabled {
+        opacity: 0.1;
+        cursor: default;
+        }
+
+    </style>
+</head>
+  <body>
+    <section class="form-holder">      
+        <h4>Login</h4>
+        <form class="login-form" (submit)="loginUser($event)">
+            <input type="text" placeholder="username" required />
+            <input type="password" placeholder="password" required />
+            <button (click)="loginUser()" routerLink="/Dashboard/connectors">LOGIN</button>
+        </form>
+    </section>
+  </body>
+</html>
